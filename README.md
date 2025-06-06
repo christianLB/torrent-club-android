@@ -20,5 +20,11 @@ This repository contains the initial setup for a **native Android** client of [T
 4. Update `ApiClient.kt` with your backend server URL.
 5. Run the **app** configuration to build and deploy the APK on a device or emulator.
    If using the command line, run `gradle wrapper` once to generate `gradle/wrapper/gradle-wrapper.jar` before executing `./gradlew`.
+6. With the SDK configured locally you can trigger a build from the terminal:
+   ```bash
+   ./gradlew assembleDebug
+   ```
+
+The current build includes a featured home screen with a central carousel and Netflix-style category rows. Ensure your backend exposes `/api/featured` and `/api/featured/carousel-content` so the screen can load data.
 
 See `docs/android-project-guide.md` for more details.
