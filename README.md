@@ -24,6 +24,11 @@ This repository contains the initial setup for a **native Android** client of [T
    ```bash
    ./gradlew assembleDebug
    ```
+7. Alternatively run the helper script to download the Android SDK and build in
+   one step:
+   ```bash
+   ./build_startup.sh
+   ```
 
 The current build includes a featured home screen with a central carousel and Netflix-style category rows. Ensure your backend exposes `/api/featured` and `/api/featured/carousel-content` so the screen can load data.
 
