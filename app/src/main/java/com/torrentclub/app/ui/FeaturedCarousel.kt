@@ -6,8 +6,10 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,13 +26,14 @@ import kotlinx.coroutines.launch
 
 private const val TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/"
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun FeaturedCarousel(items: List<CarouselItem>) {
-    val pagerState = rememberPagerState()
+    val pagerState = rememberPagerState(pageCount = { items.size })
     Box(modifier = Modifier
         .fillMaxWidth()
         .height(240.dp)) {
-        HorizontalPager(pageCount = items.size, state = pagerState, modifier = Modifier.fillMaxSize()) { page ->
+        HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) { page ->
             val item = items[page]
             val imageUrl = item.backdropPath?.let {
                 if (it.startsWith("http")) it else TMDB_IMAGE_BASE_URL + "w780" + it
